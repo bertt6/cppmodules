@@ -8,7 +8,6 @@ class Phonebook{
     private:
         Contact contact[8];
         int index;
-        int helpIndex;
         int totalIndex;
     public:
         void addContact();
@@ -17,7 +16,6 @@ class Phonebook{
         Phonebook() {
             this->index = 0;
             this->totalIndex = 0;
-            this->helpIndex = 0;
         }
 };
 
