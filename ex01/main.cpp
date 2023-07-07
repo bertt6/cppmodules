@@ -6,11 +6,11 @@ int main(int ac, char **av) {
     Phonebook phonebook;
     std::string input;
     while (true) {
-        std::cout << "Welcome PhoneBook!" << std::endl;
         std::cout << "<<-You can use this commands->>" << std::endl;
         std::cout << ">>ADD<<" << std::endl;
         std::cout << ">>SEARCH<<" << std::endl;
         std::cout << ">>EXIT<<" << std::endl;
+        std::cout << ">>Total Contact : " << phonebook.getTotalIndex() << "<<" << std::endl;
         std::cin >> input;
         if (input == "ADD") {
             phonebook.addContact();
@@ -26,12 +26,6 @@ int main(int ac, char **av) {
             continue;
         else {
             system("clear");
-            std::cout << "Welcome PhoneBook!" << std::endl;
-            std::cout << "<<-You can use this commands->>" << std::endl;
-            std::cout << ">>ADD<<" << std::endl;
-            std::cout << ">>SEARCH<<" << std::endl;
-            std::cout << ">>EXIT<<" << std::endl;
         }
-
     }
 }

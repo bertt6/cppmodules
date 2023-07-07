@@ -1,6 +1,6 @@
 NAME = phonebook
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 OBJECTS = $(FILE:.cpp=.o)
 FILE = contact.cpp phonebook.cpp main.cpp
 RM = rm -rf

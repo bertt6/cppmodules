@@ -3,6 +3,9 @@
 
 # include "contact.hpp"
 # include "iomanip"
+# include <limits>
+#include <cstdlib>
+#include <string>
 
 class Phonebook{
     private:
@@ -10,12 +13,14 @@ class Phonebook{
         int index;
         int totalIndex;
     public:
+        int getTotalIndex();
         void addContact();
         void search();
         void showContacts();
         Phonebook() {
             this->index = 0;
             this->totalIndex = 0;
+            std::cout << "Welcome PhoneBook!" << std::endl;
         }
 };
 
