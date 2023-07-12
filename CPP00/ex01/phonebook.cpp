@@ -1,8 +1,5 @@
 #include "phonebook.hpp"
 
-//10 KARAKTERİ GEÇERSE 9 KARAKTER KOY SONUNA . KOY
-// 8 tane contact geçerse 9. en eskinin yerine gçemesi lazım
-
 bool isAlphabetic(const std::string &str) {
     for (std::size_t i = 0; i < str.length(); i++) {
         if (!std::isalpha(str[i])) {
@@ -21,32 +18,48 @@ bool isNumeric(const std::string& str) {
     return true;
 }
 
+Phonebook::Phonebook() {
+    this->index = 0;
+    this->totalIndex = 0;
+    std::cout << "Welcome PhoneBook!" << std::endl;
+}
+
 void Phonebook::addContact() {
     std::cout << "Please enter name : ";
-    std::cin >> this->contact[index % 8].name;
-    while(!isAlphabetic(this->contact[index % 8].name) || this->contact[index % 8].name.length() == 0)
+    std::getline(std::cin, this->contact[index % 8].name);
+    while(!isAlphabetic(this->contact[index % 8].name) || this->contact[index % 8].name.length() < 1)
     {
-        std::cout << "Invalid input. Please enter a alpabetical character : ";
-        std::cin >> this->contact[index % 8].name;
+        std::cout << "Please enter name: ";
+        std::getline(std::cin, this->contact[index % 8].name);
     }
     std::cout << "Please enter surname : ";
-    std::cin >> this->contact[index % 8].surname;
-    while(!isAlphabetic(this->contact[index % 8].name))
+    std::getline(std::cin, this->contact[index % 8].surname);
+    while(!isAlphabetic(this->contact[index % 8].name) || this->contact[index % 8].surname.length() < 1)
     {
-        std::cout << "Invalid input. Please enter a alpabetical character : ";
-        std::cin >> this->contact[index % 8].surname;
+        std::cout << "Please enter surname : ";
+        std::getline(std::cin, this->contact[index % 8].surname);
     }
     std::cout << "Please enter nickname : ";
-    std::cin >> this->contact[index % 8].nickName;
-    std::cout << "Please enter phone number : ";
-    std::cin >> this->contact[index % 8].phoneNumber;
-    while(!isNumeric(this->contact[index % 8].phoneNumber))
+    std::getline(std::cin, this->contact[index % 8].nickName);
+    while(this->contact[index % 8].nickName.length() < 1)
     {
-        std::cout << "Invalid input. Please enter a numeric character : ";
-        std::cin >> this->contact[index % 8].phoneNumber;
+        std::cout << "Please enter nickname : ";
+        std::getline(std::cin, this->contact[index % 8].nickName);
+    }
+    std::cout << "Please enter phone number : ";
+    std::getline(std::cin, this->contact[index % 8].phoneNumber);
+    while(!isNumeric(this->contact[index % 8].phoneNumber) || this->contact[index % 8].phoneNumber.length() < 1)
+    {
+        std::cout << "Please enter phone number : ";
+        std::getline(std::cin, this->contact[index % 8].phoneNumber);
     }
     std::cout << "Please enter darkest secret : ";
-    std::cin >> this->contact[index % 8].darkSecret;
+    std::getline(std::cin, this->contact[index % 8].darkSecret);
+    while(this->contact[index % 8].darkSecret.length() < 1)
+    {
+        std::cout << "Please enter darkest secret : ";
+        std::getline(std::cin, this->contact[index % 8].darkSecret);
+    }
     system("clear");
     std::cout << "Contact Added!!" << std::endl;
     this->totalIndex++;
@@ -64,21 +77,22 @@ void Phonebook::search() {
         indeex = 8;
     for(int i = 0; i < this->totalIndex; i++)
     {
-
+        if(this->totalIndex >= 8)
+            this->totalIndex = 8;
         std::cout << std::right << std::setw(10) << i << "|";
-        if(this->contact[i].name.length() > 9)
-            std::cout << std::right << std::setw(10) << this->contact[i].name.substr(0, 9) << "." << "|";
+        if(this->contact[i % 8].name.length() > 9)
+            std::cout << std::right << std::setw(9) << this->contact[i % 8].name.substr(0, 9) << "." << "|";
         else
-            std::cout << std::right << std::setw(10) << this->contact[i].name << "|";
-        if(this->contact[i].surname.length() > 9)
-            std::cout << std::right << std::setw(10) << this->contact[i].surname.substr(0, 9) << "." << "|";
+            std::cout << std::right << std::setw(10) << this->contact[i % 8].name << "|";
+        if(this->contact[i % 8].surname.length() > 9)
+            std::cout << std::right << std::setw(9) << this->contact[i % 8].surname.substr(0, 9) << "." << "|";
         else
-            std::cout << std::right << std::setw(10) << this->contact[i].surname << "|";
-        if(this->contact[i].nickName.length() > 9)
-            std::cout << std::right << std::setw(10) << this->contact[i].nickName.substr(0, 9) << "." << "|" << std::endl;
+            std::cout << std::right << std::setw(10) << this->contact[i % 8].surname << "|";
+        if(this->contact[i % 8].nickName.length() > 9)
+            std::cout << std::right << std::setw(9) << this->contact[i % 8].nickName.substr(0, 9) << "." << "|" << std::endl;
         else
-            std::cout << std::right << std::setw(10) << this->contact[i].nickName << "|" << std::endl;
-        this->contact[i].index = i;
+            std::cout << std::right << std::setw(10) << this->contact[i % 8].nickName << "|" << std::endl;
+        this->contact[i % 8].index = i % 8;
     }
     Phonebook::showContacts();
 }
@@ -87,33 +101,39 @@ void Phonebook::search() {
 void Phonebook::showContacts() {
     std::cout << "Please select index: ";
     std::string selectIndex;
-    int selectNum = 0;
-    std::cin >> selectIndex;
-    while(!isNumeric(selectIndex) || selectIndex.length() < 1)
+    int selectNum;
+    std::getline(std::cin, selectIndex);
+    while(!isNumeric(selectIndex) || selectIndex.length() < 1 || selectIndex.length() > 2)
     {
-        std::cout << "Please enter number" << std::endl;
+        std::cout << "Please enter number : ";
+        std::getline(std::cin, selectIndex);
     }
-    if(selectNum >= 8)
+    selectNum = std::stoi(selectIndex);
+    while((selectNum < 0 || selectNum > 7))
     {
-
-        while(selectNum >= 8)
-        {
-            std::cout << "Please enter lower than 8 number" << std::endl;
-            std::cin >> selectIndex;
+        std::cout << "Please enter number : ";
+        std::getline(std::cin, selectIndex);
+        if(selectIndex.length() > 0 && isNumeric(selectIndex))
             selectNum = std::stoi(selectIndex);
+    }
+    if((selectNum < this->totalIndex + 1 || selectNum != 0))
+    {
+        while((selectNum > this->totalIndex - 1)) {
+            std::cout << "Please enter number : ";
+            std::getline(std::cin, selectIndex);
+            if ((selectIndex.length() > 0 && selectIndex.length() < 2) && isNumeric(selectIndex))
+                selectNum = std::stoi(selectIndex);
         }
     }
-    else
-    {
-        std::cout << "------------------------------------" << std::endl;
-        std::cout << "Name : " << this->contact[selectNum].name << std::endl;
-        std::cout << "Surname : " << this->contact[selectNum].surname << std::endl;
-        std::cout << "Nickname : " << this->contact[selectNum].nickName << std::endl;
-        std::cout << "Phone Number : " << this->contact[selectNum].phoneNumber << std::endl;
-        std::cout << "Darkest secret : " << this->contact[selectNum].darkSecret << std::endl;
-        std::cout << "------------------------------------" << std::endl;
-    }
+    std::cout << "------------------------------------" << std::endl;
+    std::cout << "Name : " << this->contact[selectNum].name << std::endl;
+    std::cout << "Surname : " << this->contact[selectNum].surname << std::endl;
+    std::cout << "Nickname : " << this->contact[selectNum].nickName << std::endl;
+    std::cout << "Phone Number : " << this->contact[selectNum].phoneNumber << std::endl;
+    std::cout << "Darkest secret : " << this->contact[selectNum].darkSecret << std::endl;
+    std::cout << "------------------------------------" << std::endl;
 }
+
 
 int Phonebook::getTotalIndex() {
     return this->totalIndex;

@@ -16,7 +16,7 @@ int main(int ac, char **av) {
                     av[i][j] = toupper(av[i][j]);
                 j++;
             }
-            std::cout << av[i];
+            cout << av[i];
             i++;
         }
     }

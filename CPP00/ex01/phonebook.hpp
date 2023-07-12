@@ -17,11 +17,7 @@ class Phonebook{
         void addContact();
         void search();
         void showContacts();
-        Phonebook() {
-            this->index = 0;
-            this->totalIndex = 0;
-            std::cout << "Welcome PhoneBook!" << std::endl;
-        }
+        Phonebook();
 };
 
 #endif
