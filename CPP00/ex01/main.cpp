@@ -11,7 +11,7 @@ int main(int ac, char **av) {
         std::cout << ">>SEARCH<<" << std::endl;
         std::cout << ">>EXIT<<" << std::endl;
         std::cout << ">>Total Contact : " << phonebook.getTotalIndex() << "<<" << std::endl;
-        std::getline(std::cin, input);
+        std::cin >> input;
         if (input == "ADD") {
             phonebook.addContact();
         }

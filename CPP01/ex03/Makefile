@@ -1,8 +1,8 @@
-NAME = account
+NAME = str
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJECTS = $(FILE:.cpp=.o)
-FILE = Account.cpp tests.cpp
+FILE = main.cpp  Weapon.cpp HumanA.cpp HumanB.cpp
 RM = rm -rf
 
 all: $(NAME)
@@ -17,4 +17,4 @@ fclean: clean
 	rm -rf $(NAME)
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fcl
