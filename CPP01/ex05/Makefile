@@ -1,6 +1,6 @@
 NAME = file
 CC = c++
-CPPFLAGS = -std=c++98
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 OBJECTS = $(FILE:.cpp=.o)
 FILE = main.cpp Harl.cpp
 RM = rm -rf
