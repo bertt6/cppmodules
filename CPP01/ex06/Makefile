@@ -1,8 +1,8 @@
-NAME = zombie
+NAME = harlFilter
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 OBJECTS = $(FILE:.cpp=.o)
-FILE = main.cpp Zombie.cpp ZombieHorde.cpp
+FILE = main.cpp Harl.cpp
 RM = rm -rf
 
 all: $(NAME)

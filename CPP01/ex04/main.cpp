@@ -10,7 +10,7 @@ void replaceFunct(std::ifstream& inFile, std::ofstream& ofFile, std::string& s1,
         size_t pos = 0;
         while(((pos = line.find(s1, pos)) != std::string::npos))
         {
-            line = line.substr(0, pos) + s2 + line.substr(pos, s1.length());
+            line = line.substr(0, pos) + s2 + line.substr(pos + s1.length(), line.length());
             pos += s2.length();
         }
         ofFile << line << std::endl;
@@ -30,7 +30,7 @@ void openFiles(char **av)
         return;
     }
     std::ofstream ofFile;
-    ofFile.open(filename + ".replace", std::ofstream::out);
+    ofFile.open(filename + ".replace");
     replaceFunct(inFile, ofFile, s1, s2);
 }
 

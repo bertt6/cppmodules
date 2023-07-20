@@ -1,4 +1,4 @@
-.#include "Harl.hpp"
+#include "Harl.hpp"
 
 void Harl::debug(void) {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
@@ -19,10 +19,8 @@ void Harl::error(void) {
 void Harl::complain(std::string level) {
     std::string funcitonName[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void (Harl::*f[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    //(this->*f[0])();
 
-    int index;
-    int i = 0;
+    int index = 0;
     for(int i = 0; i < 4; i++) {
         if(level == funcitonName[i])
         {

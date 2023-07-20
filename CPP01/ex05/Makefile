@@ -1,4 +1,4 @@
-NAME = file
+NAME = harl
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 OBJECTS = $(FILE:.cpp=.o)
@@ -17,4 +17,4 @@ fclean: clean
 	rm -rf $(NAME)
 re: fclean all
 
-.PHONY: all clean fcl
+.PHONY: all clean fclean re

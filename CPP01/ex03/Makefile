@@ -1,4 +1,4 @@
-NAME = str
+NAME = weapon
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJECTS = $(FILE:.cpp=.o)
@@ -17,4 +17,4 @@ fclean: clean
 	rm -rf $(NAME)
 re: fclean all
 
-.PHONY: all clean fcl
+.PHONY: all clean fclean re
