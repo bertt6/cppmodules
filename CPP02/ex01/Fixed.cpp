@@ -1,7 +1,31 @@
 #include "Fixed.hpp"
 
+int Fixed::getRawBits( void ) const {
+    return this->_fixed_num;
+}
+
+int Fixed::toInt(void) const {
+    return this->_fixed_num >> this->_fractional_num;
+}
+//Burada hata olabilir 1234 yazıyor yazması gereken -> 1234.43
+float Fixed::toFloat(void) const {
+    return this->_fixed_num / (1 << this->_fractional_num);
+}
+
+Fixed::Fixed(const int num) {
+    std::cout << "Int constructor called" << std::endl;
+    this->_fixed_num = num << _fractional_num;
+}
+
 Fixed::Fixed() {
-    cout << "Default consturctor called" << endl;
+    cout << "Default constructor called" << endl;
+    this->_fixed_num = 0;
+}
+
+Fixed::Fixed(const float value)
+{
+    std::cout << "Float constructor called" << std::endl;
+    this->_fixed_num = int(roundf(value * (1 << _fractional_num)));
 }
 
 Fixed::Fixed(const Fixed &cpy) {
@@ -9,9 +33,10 @@ Fixed::Fixed(const Fixed &cpy) {
     *this = cpy;
 }
 
-Fixed& Fixed::operator = (const Fixed &assing) {
-    cout << "Copy assingment operator called" << endl;
-    this->_fixed_point = assing._fixed_point;
+
+Fixed& Fixed::operator = (Fixed const &assing) {
+    cout << "Copy assignment operator called" << endl;
+    this->_fixed_num = assing.getRawBits();
     return *this;
 }
 
@@ -19,22 +44,17 @@ Fixed::~Fixed() {
     cout << "Destructor called" << endl;
 }
 
-int Fixed::getRawBits(void) const {
-    cout << "getRawBits member function called" << endl;
-    return this->_fixed_point;
-}
-
 void Fixed::setRawBits(int const raw) {
-    this->_fixed_point = raw;
+    this->_fixed_num = raw;
 }
 
-float Fixed::toFloat(void) const {
-    return roundf((float)(_fixed_point) /(1 << _fraction_number));
+std::ostream &operator<<(std::ostream &output, const Fixed &fixed) {
+    output << fixed.toFloat();
+    return output;
 }
 
-int Fixed::toInt( void ) const {
-    return (int)this->_fixed_point >> _fraction_number;
-}
+
+
 
 
 
