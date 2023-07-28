@@ -1,0 +1,52 @@
+#ifndef FIXED_HPP
+# define FIXED_HPP
+
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+class Fixed {
+    private:
+        int _fixed_num;
+        static const int _fractional_num = 8;
+    public:
+        Fixed();
+        Fixed(const int);
+        Fixed(const float value);
+        Fixed(const Fixed &cpy);
+        Fixed& operator = (Fixed const &assing);
+        ~Fixed();
+        int getRawBits( void ) const;
+        void setRawBits( int const raw );
+
+        float toFloat( void ) const;
+        int toInt( void ) const;
+
+        Fixed &operator ++ (void);
+        Fixed &operator -- (void);
+        Fixed operator ++ (int);
+        Fixed operator -- (int);
+        
+        float operator + (const Fixed &fixed);
+        float operator - (const Fixed &fixed);
+        float operator * (const Fixed &fixed);
+        float operator / (const Fixed &fixed);
+
+        bool operator > (const Fixed &fixed);
+        bool operator < (const Fixed &fixed);
+        bool operator >= (const Fixed &fixed);
+        bool operator <= (const Fixed &fixed);
+        bool operator == (const Fixed &fixed);
+        bool operator != (const Fixed &fixed);
+
+        static Fixed &min(Fixed &fixed1, Fixed &fixed2);
+        const static Fixed &min(const Fixed &fixed1, const Fixed &fixed2);
+        static Fixed &max(Fixed &fixed1, Fixed &fixed2);
+        const static Fixed &max(const Fixed &fixed1, const Fixed &fixed2);
+
+};
+
+std::ostream& operator << (std::ostream &output, const Fixed &fixed);
+
+#endif

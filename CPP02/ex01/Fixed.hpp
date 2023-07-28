@@ -25,4 +25,5 @@ class Fixed {
 };
 
 std::ostream& operator << (std::ostream &output, const Fixed &fixed);
+
 #endif

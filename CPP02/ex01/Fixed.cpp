@@ -7,9 +7,8 @@ int Fixed::getRawBits( void ) const {
 int Fixed::toInt(void) const {
     return this->_fixed_num >> this->_fractional_num;
 }
-//Burada hata olabilir 1234 yazıyor yazması gereken -> 1234.43
 float Fixed::toFloat(void) const {
-    return this->_fixed_num / (1 << this->_fractional_num);
+    return (float)this->_fixed_num / (1 << this->_fractional_num);
 }
 
 Fixed::Fixed(const int num) {
@@ -49,13 +48,9 @@ void Fixed::setRawBits(int const raw) {
 }
 
 std::ostream &operator<<(std::ostream &output, const Fixed &fixed) {
-    output << fixed.toFloat();
+    output << (float)fixed.toFloat();
     return output;
 }
-
-
-
-
 
 
 
