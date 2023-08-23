@@ -9,7 +9,8 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : public ClapTrap
+{
     public:
         ScavTrap();
         ~ScavTrap();

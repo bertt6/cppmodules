@@ -10,20 +10,16 @@ using std::string;
 class ClapTrap {
     protected:
         string _name;
-        int _healthPoint;
+        int _hitPoint;
         int _energyPoint;
         int _attackDamage;
-
     public:
         ClapTrap();
-        ClapTrap(string);
         ~ClapTrap();
+        ClapTrap(string);
         ClapTrap(const ClapTrap &);
-        ClapTrap &operator=(const ClapTrap &);
-        virtual void attack(const string &target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
-        string getName(void);
+        ClapTrap &operator = (const ClapTrap &);
+
         int getHealthPoint(void);
         int getEnergyPoint(void);
         int getAttackDamage(void);

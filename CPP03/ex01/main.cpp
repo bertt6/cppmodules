@@ -2,7 +2,11 @@
 #include "ScavTrap.hpp"
 
 int main() {
-    ScavTrap a; // clapTrap2 nesnesi 7 sağlık kazanır
+    ClapTrap *a = new ScavTrap("berat");
+    ScavTrap test("test");
 
-    return 0;
+    a->attack("ömer");
+    test.attack("enemy");
+    test.takeDamage(30);
+    test.guardGate();
 }
