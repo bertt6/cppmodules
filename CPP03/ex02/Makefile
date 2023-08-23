@@ -2,7 +2,7 @@ NAME = ClapTrap
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 OBJECTS = $(FILE:.cpp=.o)
-FILE = main.cpp ClapTrap.cpp ScavTrap.cpp
+FILE = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 RM = rm -rf
 
 all: $(NAME)

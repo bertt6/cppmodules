@@ -1,36 +1,33 @@
 #ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 #include <iostream>
 
 using std::cout;
-using std::endl;
 using std::string;
+using std::endl;
 
 class ClapTrap {
     protected:
-        string _name;
-        int _healthPoint;
-        int _energyPoint;
-        int _attackDamage;
-
-    public:
-        ClapTrap();
-        ClapTrap(string);
-        ~ClapTrap();
-        ClapTrap(const ClapTrap &);
-        ClapTrap &operator=(const ClapTrap &);
-        virtual void attack(const string &target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
+		string	_name;
+		int	_hitpoint;
+		int	_energy;
+		int	_attack;
+	public:
+		ClapTrap();
+        ClapTrap(string name);
+        ClapTrap(const ClapTrap &cpy);
+        ClapTrap& operator=(const ClapTrap &assign);
+		virtual void	attack(const string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+        void    setName(string name);
         string getName(void);
-        int getHealthPoint(void);
-        int getEnergyPoint(void);
-        int getAttackDamage(void);
-        void setName(string);
-        void setHealthPoint(int);
-        void setEnergyPoint(int);
-        void setAttackDamage(int);
+        void    setAttack(int amount);
+        int     getAttack(void);
+        void    setHitpoint(int amount);
+        int     getHitpoint(void);
+		virtual ~ClapTrap();
 };
 
 #endif

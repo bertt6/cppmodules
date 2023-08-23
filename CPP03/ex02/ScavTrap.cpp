@@ -1,53 +1,43 @@
-
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap()
-{
-    this->_name = "undefined";
-    this->_hitPoint = 100;
-    this->_energyPoint = 50;
-    this->_attackDamage = 20;
-    cout << "ScavTrap default constructor called" << endl;
+ScavTrap::ScavTrap() {
+    _name = "ScavTrap";
+    _hitpoint = 100;
+    _energy = 50;
+    _attack = 20;
 }
 
-ScavTrap::~ScavTrap(void)
-{
-    cout << "ScavTrap destructor called" << endl;
+ScavTrap::ScavTrap(std::string name) {
+    _name = name;
+    _hitpoint = 100;
+    _energy = 50;
+    _attack = 20;
 }
 
-ScavTrap::ScavTrap(string name) : ClapTrap(name)
-{
-    this->_name = name;
-    this->_hitPoint = 100;
-    this->_energyPoint = 50;
-    this->_attackDamage = 20;
-    cout << "ScavTrap constructor called" << endl;
+ScavTrap::ScavTrap(const ScavTrap &cpy) {
+    *this = cpy;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy)
-{
-    *this = copy;
+ScavTrap &ScavTrap::operator=(const ScavTrap &assign) {
+    this->_name = assign._name;
+    this->_hitpoint = assign._hitpoint;
+    this->_energy = assign._energy;
+    this->_attack = assign._attack;
+    return  *this;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
-{
-    if (this != &copy)
-        *this = copy;
-    return *this;
-}
-
-void ScavTrap::attack(const string &target)
-{
-    if (this->_hitPoint > 0 && this->_energyPoint > 0)
-    {
-        cout << "ScavTrap " << this->_name << " attacks " << target << ", causing ";
-        cout << this->_attackDamage << " point of damage!" << endl;
-    }
+void    ScavTrap::attack(const std::string& name) {
+    if (_hitpoint <= 0)
+        std::cout << _name << " is dead!" << std::endl;
     else
-        cout << "ScavTrap " << this->_name << " no hitPoint or energyPoint!" << endl;
+        std::cout << "ScavTrap " << this->_name << " attacks " << name << ", causing " << this->_attack << " points of damage!" << std::endl;
 }
 
-void ScavTrap::guardGate(void)
-{
-    cout << "ScavTrap is now in Gate keeper mode" << endl;
+void    ScavTrap::guardGate() {
+    if (this->_hitpoint <= 0)
+        std::cout << "ScavTrap " << this->_name << " is dead!" << std::endl;
+    else
+        std::cout << "ScavTrap " << this->_name << " guardMod on!" << std::endl;
 }
+
+ScavTrap::~ScavTrap() {}
