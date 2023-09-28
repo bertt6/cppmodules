@@ -1,35 +1,36 @@
 # include "FragTrap.hpp"
 
 FragTrap::FragTrap() {
-    _name = "FragTrap";
-    _hitpoint = 100;
-    _energy = 50;
-    _attack = 30;
-}
+    cout << "FragTrap constructor called" << endl;
+    _name = "Undefined";
+    _healthPoint = 100;
+    _energyPoint = 100;
+    _attackDamage = 30;
+} 
 
-FragTrap::FragTrap(std::string name) {
+FragTrap::FragTrap(string name) {
+    cout << "FragTrap constructor called" << endl;
     _name = name;
-    _hitpoint = 100;
-    _energy = 50;
-    _attack = 30;
+    _healthPoint = 100;
+    _energyPoint = 100;
+    _attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &cpy) {
     *this = cpy;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap &assign) {
-    this->_name = assign._name;
-    this->_attack = assign._attack;
-    this->_energy = assign._energy;
-    this->_hitpoint = assign._hitpoint;
-    return  *this;
+FragTrap &FragTrap::operator=(const FragTrap &copy)
+{
+    if (this != &copy)
+        *this = copy;
+    return *this;
 }
 
-void    FragTrap::highFiveGuys() {
-    std::cout << this->_name << "is highFiveGuys announce!" << std::endl;
+FragTrap::~FragTrap() {
+    cout << "FragTrap destructor called" << endl;
 }
 
-FragTrap::~FragTrap(){
-    std::cout << "FragTrap Destructor" << std::endl;
+void FragTrap::highFiveGuys() {
+    cout << "FragTrap wants to high five you!" << endl;
 }

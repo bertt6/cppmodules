@@ -1,6 +1,6 @@
 NAME = ClapTrap
 CC = c++
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror -g
 OBJECTS = $(FILE:.cpp=.o)
 FILE = main.cpp ClapTrap.cpp ScavTrap.cpp
 RM = rm -rf

@@ -5,14 +5,15 @@
 # include "ClapTrap.hpp"
 
 class FragTrap: public ClapTrap{
-private:
-public:
-    FragTrap();
-    FragTrap(std::string name);
-    FragTrap(const FragTrap &cpy);
-    FragTrap& operator=(const FragTrap &assign);
-    ~FragTrap();
-    void    highFiveGuys(void);
+    public:
+        FragTrap();
+        FragTrap(string name);
+        FragTrap(const FragTrap &cpy);
+        FragTrap& operator=(const FragTrap &assign);
+        ~FragTrap();
+        void    highFiveGuys(void);
+
+        void debug(string);
 };
 
 #endif
