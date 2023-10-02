@@ -4,11 +4,16 @@
 #include <iostream>
 #include <cstring>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 using std::endl;
 using std::cout;
 
+class Brain;
+
 class Cat : public Animal{
+    private:
+        Brain *brain;
     public:
         Cat();
         Cat(const Cat &);

@@ -3,6 +3,7 @@
 Dog::Dog() {
     cout << "Dog constructor called" << endl;
     this->type = "Dog";
+    this->brain = new Brain;
 }
 
 Dog::Dog(const Dog &cpy) {

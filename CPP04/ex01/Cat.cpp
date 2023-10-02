@@ -3,6 +3,7 @@
 Cat::Cat() {
     cout << "Cat constructor called" << endl;
     this->type = "Cat";
+    this->brain = new Brain;
 }
 
 Cat::Cat(const Cat &cpy) {
