@@ -3,19 +3,24 @@
 Cat::Cat() {
     cout << "Cat constructor called" << endl;
     this->type = "Cat";
-    this->brain = new Brain;
-}
-
-Cat::Cat(const Cat &cpy) {
-    *this = cpy;
+    this->brain = new Brain();
 }
 
 Cat::~Cat() {
     cout << "Cat destructor called" << endl;
+    delete this->brain;
 }
 
-Cat &Cat::operator=(const Cat &assing) {
-    this->type = assing.type;
+Cat::Cat(const Cat &copy) {
+    *this = copy;
+    this->brain = new Brain(*copy.brain);
+}
+
+Cat &Cat::operator = (const Cat &copy) {
+    if(this == &copy)
+        return *this;
+    *this = copy;
+    this->brain = new Brain(*copy.brain);
     return *this;
 }
 

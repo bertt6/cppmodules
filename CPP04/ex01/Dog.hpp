@@ -9,8 +9,6 @@
 using std::endl;
 using std::cout;
 
-class Brain;
-
 class Dog : public Animal{
     private:
         Brain *brain;

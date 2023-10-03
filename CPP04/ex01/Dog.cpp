@@ -3,22 +3,25 @@
 Dog::Dog() {
     cout << "Dog constructor called" << endl;
     this->type = "Dog";
-    this->brain = new Brain;
-}
-
-Dog::Dog(const Dog &cpy) {
-    *this = cpy;
+    this->brain = new Brain();
 }
 
 Dog::~Dog() {
     cout << "Dog destructor called" << endl;
+    delete this->brain;
 }
 
-Dog &Dog::operator=(const Dog &assing) {
-    this->type = assing.type;
+Dog::Dog(const Dog &copy) {
+    *this = copy;
+    this->brain = new Brain(*copy.brain);
+}
+
+Dog &Dog::operator = (const Dog &copy) {
+    if (this != &copy)
+        *this = copy;
+        this->brain = new Brain(*copy.brain);
     return *this;
 }
-
 
 void Dog::makeSound() const{
     cout << "Woof woof!" << endl;

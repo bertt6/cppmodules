@@ -1,22 +1,26 @@
 #include "Brain.hpp"
 
-Brain::Brain() {
+Brain::Brain()
+{
     cout << "Brain constructor called" << endl;
 }
 
-Brain::Brain(const Brain &cpy) {
-    *this = cpy;
-}
-
-Brain::~Brain() {
+Brain::~Brain()
+{
     cout << "Brain destructor called" << endl;
 }
 
-Brain &Brain::operator=(const Brain &assing) {
-    if(this != &assing){
-        for (int i = 0; i < 100; i++) {
-            this->ideas[i] = assing.ideas[i];
-        }
+Brain::Brain(const Brain &copy)
+{
+    *this = copy;
+}
+
+Brain   &Brain::operator = (const Brain &copy)
+{
+    if (this != &copy)
+    {
+        for (int i = 0; i < 100; i++)
+            this->ideas[i] = copy.ideas[i];
     }
     return *this;
 }

@@ -1,17 +1,17 @@
 #ifndef BRAIN_HPP
-# define BRAIN_HPP
- 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#define BRAIN_HPP
 
-class Brain {
+#include "Animal.hpp"
+
+class   Brain
+{
     private:
         std::string *ideas[100];
     public:
         Brain();
-        Brain(const Brain &);
         ~Brain();
-        Brain &operator=(const Brain &);
+        Brain(const Brain &);
+        Brain   &operator = (const Brain &);
 };
 
 #endif
