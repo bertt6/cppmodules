@@ -1,5 +1,3 @@
-
-
 SRC = Bureaucrat.cpp \
 	AForm.cpp \
 	ShrubberyCreationForm.cpp \

@@ -28,3 +28,4 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
         else 
             cout << this->_target << " has been rebotomize failed" << endl;
     }
+}

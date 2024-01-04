@@ -21,7 +21,7 @@ class   AForm
         const int _execGrade;
     public:
         AForm();
-        ~AForm();
+        virtual ~AForm();
         AForm(const AForm &);
         AForm &operator = (const AForm &);
         AForm(string name, int grade, int execGrade);

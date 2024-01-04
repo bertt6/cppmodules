@@ -1,5 +1,25 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() : _name("default")
+{
+    this->_grade = 150;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &arg) : _name(arg._name)
+{
+    this->_grade = arg._grade;
+}
+
+Bureaucrat &Bureaucrat::operator = (const Bureaucrat &arg)
+{
+    this->_grade = arg._grade;
+    return *this;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+}
+
 Bureaucrat::Bureaucrat(int grade, string name) : _name(name)
 {
     cout << "Grade is : " << grade << endl;

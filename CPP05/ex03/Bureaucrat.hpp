@@ -17,6 +17,10 @@ class Bureaucrat {
         const string _name;
         int _grade;
     public:
+        Bureaucrat();
+        Bureaucrat(const Bureaucrat &);
+        Bureaucrat &operator = (const Bureaucrat &);
+        ~Bureaucrat();
         Bureaucrat(int, const string);
 
         int     getGrade(void) const;

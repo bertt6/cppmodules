@@ -1,17 +1,22 @@
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
     try
     {
-        Bureaucrat bureaucrat(137, "bureaucrat");
-        ShrubberyCreationForm shrubbery("files");
+        Intern someRandomIntern;
+        AForm* rrf;
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
-        bureaucrat.signForm(shrubbery);
-        bureaucrat.executeForm(shrubbery);
+        Bureaucrat b(99, "test");
+        b.signForm(*rrf);
+        b.executeForm(*rrf);
     }
     catch (std::exception &e)
     {
         cout << e.what() << endl;
-    } 
+    }
 }

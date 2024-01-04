@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() : _isSigned(false), _grade(1), _name(""), _execGrade(1) {}
+Form::Form() : _name(""), _isSigned(false), _grade(1), _execGrade(1) {}
 
 Form::Form(const Form &cpy) : _name(cpy._name), _isSigned(cpy._isSigned), _grade(cpy._grade), _execGrade(cpy._execGrade) {}
 
