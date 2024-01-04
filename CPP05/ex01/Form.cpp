@@ -59,3 +59,13 @@ Form &Form::operator=(const Form &copy)
         this->_isSigned = copy.getSign();
     return *this;
 }
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return "Grade Too Low! Grade needs to be between 1 and 150";
+}
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return "Grade Too High! Grade needs to be between 1 and 150";
+}

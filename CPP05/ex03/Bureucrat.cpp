@@ -50,7 +50,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 	return "Grade Too High! Grade needs to be between 1 and 150";
 }
 
-void Bureaucrat::signForm(Form &form) 
+void Bureaucrat::signForm(AForm &form) 
 {
     if (form.getSign() == false)
     {
@@ -67,4 +67,18 @@ void Bureaucrat::signForm(Form &form)
     }
     else 
         cout << this->getName() << " couldn't sign " << form.getName() << " because form already signed" << endl;
+}
+
+void    Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        form.execute(*this);
+        cout << this->getName() << " executed " << form.getName() << endl;
+    }
+    catch (std::exception &e)
+    {
+        cout << this->getName() << " could not executed " << form.getName() << endl;
+        return;
+    }
 }

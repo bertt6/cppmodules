@@ -4,14 +4,14 @@
 int main() {
     try
     {
-        Bureaucrat a(12, "Berat");
-        Form c("Dava", 15, 15);
-        a.signForm(c);
+        Bureaucrat a(21, "test");
+        cout << a << endl;
 
+	    Form form("file", 22, 3);
+	    a.signForm(form);
     }
-    catch(const std::exception& e)
+    catch (std::exception &e)
     {
-        cout << "This error is: " << e.what() << endl;
+        cout << e.what() << endl;
     }
-    
 }
